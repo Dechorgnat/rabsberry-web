@@ -10,17 +10,15 @@ def manage_event(event):
         Log.info("RFID reader "+ actor_id+ " is "+ action)
     else:
         Log.info("Event from RFID reader "+ actor_id+ ": tag "+ rfid_id+ " get "+ action)
+        if action == 'IN':
+            args = ['/home/pi/Rabsberry/rabsberry-core/plugins/clock/read_hour.py']
+            p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            output, error = p.communicate()
+            if p.returncode != 0:
+                raise subprocess.CalledProcessError(p.returncode, "", error)
+            return 'OK'
+
 
     return 'OK'
 
-    '''args = ['rbd',
-            'event',
-            pool_name+"/"+image_name+"@"+snap_name,
-            dest_pool_name+"/"+dest_image_name
-            ]
-    p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    output, error = p.communicate()
-    if p.returncode != 0:
-        raise subprocess.CalledProcessError(p.returncode, "", error)
-    return StringIO(output)
-        '''
+
