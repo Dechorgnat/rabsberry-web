@@ -5,7 +5,13 @@ from Log import Log
 def tag_manage_event(event):
     action = event['action']
     actor_id = event['actor_id']
-    Log.info("Event from Tag ", actor_id, ", action : ", action)
+    rfid_id = event['rfid_id']
+    if rfid_id =='0':
+        Log.info("RFID reader ", actor_id, " is ", action)
+    else:
+        Log.info("Event from RFID reader ", actor_id, ": tag ", rfid_id, " get ", action)
+
+
     '''args = ['rbd',
             'event',
             pool_name+"/"+image_name+"@"+snap_name,
