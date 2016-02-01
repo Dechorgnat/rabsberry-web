@@ -11,12 +11,13 @@ def manage_event(event):
     else:
         Log.info("Event from RFID reader "+ actor_id+ ": tag "+ rfid_id+ " get "+ action)
         if action == 'IN':
+	    Log.info("trying to read hour")
             args = ['/home/pi/Rabsberry/rabsberry-core/plugins/clock/read_hour.py']
             p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             output, error = p.communicate()
             if p.returncode != 0:
-                raise subprocess.CalledProcessError(p.returncode, "", error)
-            return 'OK'
+                raise subprocess.CalledProcessError(p.returncode, "can't read hour", error)
+            return output
 
 
     return 'OK'
