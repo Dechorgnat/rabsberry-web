@@ -2,16 +2,20 @@ import subprocess
 from StringIO import StringIO
 from Log import Log
 
-from database import db
+from database import get_db_client
+
+db = get_db_client()
 
 def get_rfid_info(rfid_id):
     rfid = db.rfid.find_one({"id": rfid_id})
-    if rfid:
-        return rfid
+    print rfid
+    if rfid != None:
+        print "tag "+rfid_id+" deja dans la base"
     else:
+        print "insertion du tag "+rfid_id+" dans la base"
         rfid = {"id":rfid_id,"desc":"","action_in":"","action_out":""}
         db.rfid.insert_one(rfid)
-        return rfid
+    return rfid
 
 def manage_event(event):
     action = event['action']
@@ -26,7 +30,7 @@ def manage_event(event):
         if action == 'IN':
 	    Log.info("trying to read hour")
             # TODO use config
-            args = ['/home/pi/Rabsberry/rabsberry-core/plugins/clock/read_hour.py']
+            args = ['/home/pi/Rabsberry/core/plugins/clock/read_hour.py']
             p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             output, error = p.communicate()
             if p.returncode != 0:

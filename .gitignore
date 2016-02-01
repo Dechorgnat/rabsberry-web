@@ -44,3 +44,4 @@ fabric.properties
 
 # Python spec
 *.pyc
+nohup.out

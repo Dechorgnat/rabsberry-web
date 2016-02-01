@@ -1,4 +1,5 @@
 from pymongo import MongoClient
 
-client = MongoClient()
-db = client.rabsberry
+def get_db_client ():
+    client = MongoClient()
+    return client.rabsberry
