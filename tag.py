@@ -9,7 +9,7 @@ def get_rfid_info(rfid_id):
     if rfid:
         return rfid
     else:
-        rfid = {"id":rfid,"desc":"","action_in":"","action_out":""}
+        rfid = {"id":rfid_id,"desc":"","action_in":"","action_out":""}
         db.rfid.insert_one(rfid)
         return rfid
 
