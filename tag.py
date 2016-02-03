@@ -1,6 +1,11 @@
+#!/usr/bin/python
+
 import subprocess
-from StringIO import StringIO
 from Log import Log
+
+from core.tools.config import getConfig
+conf = getConfig()
+CORE_ROOT = conf['CORE_ROOT']
 
 from database import get_db_client
 
@@ -28,9 +33,8 @@ def manage_event(event):
 
         Log.info("Event from RFID reader "+ actor_id+ ": tag "+ rfid_id+ " get "+ action)
         if action == 'IN':
-	    Log.info("trying to read hour")
-            # TODO use config
-            args = ['/home/pi/Rabsberry/core/plugins/clock/read_hour.py']
+            Log.info("trying to read hour")
+            args = [CORE_ROOT+'/plugins/clock/read_exact_hour.py']
             p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             output, error = p.communicate()
             if p.returncode != 0:
