@@ -45,3 +45,5 @@ fabric.properties
 # Python spec
 *.pyc
 nohup.out
+uwsgi.log
+uwsgi.sock
