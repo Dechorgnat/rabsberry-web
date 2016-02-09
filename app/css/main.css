@@ -160,3 +160,5 @@ form label {
 .red {color:red;}
 
 .clickable {cursor: hand;}
+
+input { width:250px;}
