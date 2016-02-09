@@ -18,7 +18,7 @@ def get_rfid_info(rfid_id):
         print "tag "+rfid_id+" deja dans la base"
     else:
         print "insertion du tag "+rfid_id+" dans la base"
-        rfid = {"id":rfid_id,"desc":"","action_in":"","action_out":""}
+        rfid = {"rfid_id":rfid_id,"desc":"","action_in":"None","action_out":"None"}
         db.rfid.insert_one(rfid)
     return rfid
 
@@ -33,7 +33,7 @@ def manage_event(event):
 
         Log.info("Event from RFID reader "+ actor_id+ ": tag "+ rfid_id+ " get "+ action)
         if action == 'IN':
-            Log.info("trying to read hour")
+            Log.info("trying to read exact hour")
             args = [CORE_ROOT+'/plugins/clock/read_exact_hour.py']
             p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             output, error = p.communicate()
@@ -41,7 +41,4 @@ def manage_event(event):
                 raise subprocess.CalledProcessError(p.returncode, "can't read hour", error)
             return output
 
-
     return 'OK'
-
-

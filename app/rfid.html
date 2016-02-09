@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+	<title>Gestion des objets RFID</title>
+	<!-- INCLUDE REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
+	<script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/ui-bootstrap-tpls-1.1.2.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+	<!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
+	<link rel="stylesheet" href="css/main.css">
+
+    <script type="text/javascript" src="js/rfid-app.js"></script>
+
+</head>
+<body  ng-app="rfidApp">
+    <div class='banner'>
+        <div class='container'>
+            <h1>Gestion des objets RFID</h1>
+        </div>
+    </div>
+
+    <div class="container main-frame" ng-controller="rfidCtrl">
+        <br><br>
+        <label class="fa fa-search"></label> <input type="text" ng-model="search.desc"> |
+        <span ng-click="refresh()" class="clickable"><i class="fa fa-refresh"></i> Refresh</span><br><br>
+        <table>
+            <thead>
+                <th>RFID</th>
+                <th>Description</th>
+                <th>Action IN</th>
+                <th>Action OUT</th>
+                <th></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="rfid in rfids|orderBy:rfid_id | filter:search">
+                <td>{{ rfid.rfid_id }}</td>
+                <td>{{ rfid.desc }}</td>
+                <td>{{ rfid.action_in }}</td>
+                <td>{{ rfid.action_out }}</td>
+                <td>
+                    <a href="#" ng-click="editRfid(rfid)" class="fa fa-pencil " title="modifier"></a> |
+                    <a href="#" ng-click="removeRfid(rfid)" class="fa fa-remove red" title="supprimer"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <div class="edit-box" id="EditRfid" ng-show="rfid">
+            <div class="title">Modification RFID</div>
+            <form action="" ng-submit="saveRfid()">
+                <div  class="entry_fields">
+                    <label>RFID : </label><input type="text" ng-model="rfid.rfid_id" disabled/><br>
+                    <label>Description : </label><input type="text" ng-model="rfid.desc"/><br>
+                    <label>Action IN : </label><input type="text" ng-model="rfid.action_in"/><br>
+                    <label>Action OUT : </label><input type="text" ng-model="rfid.action_out"/><br>
+                </div>
+                <div class="button_bar">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> Modifier</button>
+                    <button type="button" class="btn btn-default" ng-click="cancelEditRfid()"><i class="fa fa-close"></i> Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,2 +1,6 @@
 flask
+flask-mongoengine
+flask-mongorest
+flask-views
+mimerender
 pymongo
