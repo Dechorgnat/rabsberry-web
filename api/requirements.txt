@@ -4,3 +4,4 @@ flask-mongorest
 flask-views
 mimerender
 pymongo
+python-dateutil
