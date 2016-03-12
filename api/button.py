@@ -28,8 +28,8 @@ def manage_event(event):
     Log.info("Event from "+ actor_id+ ": action "+ action)
     if action == 'SHORT_PRESSED':
         Log.info("make R2D2 sream")
-        args = [CORE_ROOT+'/function/play_audio.py',
-                CORE_ROOT+'/resources/mp3/star_wars/r2d2/R2d2 Scream.mp3']
+        args = [CORE_ROOT+'/functions/play_audio.py',
+                CORE_ROOT+'/resources/mp3/star_wars/r2d2/r2d2-squeaks5.mp3']
         p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         output, error = p.communicate()
         if p.returncode != 0:

@@ -18,6 +18,7 @@ from flask.ext.mongorest import operators as ops
 from flask.ext.mongorest import methods
 
 import tag
+import button
 
 
 app = Flask(__name__)
@@ -73,7 +74,8 @@ def event():
     actor_type = event['actor_type']
     if actor_type == "RFID_READER":
         return tag.manage_event(event)
-
+    if actor_type == "TOP_BUTTON":
+        return button.manage_event(event)
 
 if __name__ == '__main__':
     app.run()
