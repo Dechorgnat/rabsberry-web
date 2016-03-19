@@ -7,21 +7,6 @@ from core.tools.config import getConfig
 conf = getConfig()
 CORE_ROOT = conf['CORE_ROOT']
 
-from database import get_db_client
-
-db = get_db_client()
-
-def get_rfid_info(rfid_id):
-    rfid = db.rfid.find_one({"id": rfid_id})
-    print rfid
-    if rfid != None:
-        print "tag "+rfid_id+" deja dans la base"
-    else:
-        print "insertion du tag "+rfid_id+" dans la base"
-        rfid = {"rfid_id":rfid_id,"desc":"","action_in":"None","action_out":"None"}
-        db.rfid.insert_one(rfid)
-    return rfid
-
 def manage_event(event):
     action = event['action']
     actor_id = event['actor_id']
