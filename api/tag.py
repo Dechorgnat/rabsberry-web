@@ -32,8 +32,16 @@ def manage_event(event):
     else:
         rfid = get_rfid_info(rfid_id)
 
-        logging.debug("Event from RFID reader "+ actor_id+ ": tag "+ rfid_id+ " get "+ action)
         if action == 'IN':
+            action_prg = rfid['action_in']
+        elif action == 'OUT':
+            action_prg = rfid['action_out']
+        logging.debug("Event from RFID reader "+ actor_id+ ": tag "+ rfid_id+ " get "+ action +" -> "+action_prg)
+
+        if action_prg == "None":
+            return 'OK'
+
+        if action_prg == 'read_exact_hour':
             logging.debug("trying to read exact hour")
             args = [CORE_ROOT+'/plugins/clock/read_exact_hour.py']
             p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -42,4 +50,14 @@ def manage_event(event):
                 raise subprocess.CalledProcessError(p.returncode, "can't read hour", error)
             return output
 
+        if action_prg == 'read_hour':
+            logging.debug("trying to read hour")
+            args = [CORE_ROOT+'/plugins/clock/read_hour.py']
+            p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            output, error = p.communicate()
+            if p.returncode != 0:
+                raise subprocess.CalledProcessError(p.returncode, "can't read hour", error)
+            return output
+
+        logging.debug(action_prg + " is not implemented")
     return 'OK'
