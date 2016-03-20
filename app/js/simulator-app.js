@@ -16,7 +16,7 @@ app.controller('simulatorCtrl', function ($scope, $http) {
      action: IN | OUT | ON | OFF
      tag-id: '0' if no tag event
      */
-
+    $scope.submitted = false;
     $scope.event = {};
     $scope.actor_types = ['RFID_READER', 'TOP_BUTTON'];
     $scope.actions = [];

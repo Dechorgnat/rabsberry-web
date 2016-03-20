@@ -41,35 +41,39 @@
 
     <div class="container main-frame" ng-controller="simulatorCtrl">
         <form class="form" name="form" novalidate>
-            <div class="form-group" ng-class="{ 'has-success': form[param['actor_type']].$valid && submitted,
-                                          'has-error': form[param['actor_type']].$invalid && submitted }">
+            <div class="form-group" ng-class="{ 'has-success': form['actor_type'].$valid && submitted,
+                                          'has-error': form['actor_type'].$invalid && submitted }">
                 <label>Actor type</label>
-                <select ng-model="event.actor_type">
+                <select ng-model="event.actor_type" name=actor_type" required>
                     <option ng-repeat="actor_type in actor_types" value="{{ actor_type }}" >
                         {{ actor_type }}
                     </option>
                 </select>
+                <p class="help-block" ng-show="form['actor_type'].$error.required && submitted">This field is required</p>
             </div>
 
-            <div class="form-group" ng-class="{ 'has-success': form[param['actor_id']].$valid && submitted,
-                                          'has-error': form[param['actor_id']].$invalid && submitted }">
+            <div class="form-group" ng-class="{ 'has-success': form['actor_id'].$valid && submitted,
+                                          'has-error': form['actor_id'].$invalid && submitted }">
                 <label>Actor id</label>
-                <input name="actor_id" class="form-control" type="text" ng-model="event.actor_id" ng-required>
+                <input name="actor_id" class="form-control" type="text" ng-model="event.actor_id" required>
+                <p class="help-block" ng-show="form['actor_id'].$error.required && submitted">This field is required</p>
             </div>
-            <div class="form-group" ng-class="{ 'has-success': form[param['action']].$valid && submitted,
-                                          'has-error': form[param['action']].$invalid && submitted }">
+            <div class="form-group" ng-class="{ 'has-success': form['action'].$valid && submitted,
+                                          'has-error': form['action'].$invalid && submitted }">
                 <label>Action</label>
-                <select ng-model="event.action">
+                <select ng-model="event.action" name="action" required>
                     <option ng-repeat="action in actions[event.actor_type]" value="{{ action }}" >
                         {{ action }}
                     </option>
                 </select>
+                <p class="help-block" ng-show="form['action'].$error.required && submitted">This field is required</p>
             </div>
-            <div class="form-group" ng-class="{ 'has-success': form[param['rfid_id']].$valid && submitted,
-                                          'has-error': form[param['rfid_id']].$invalid && submitted }"
+            <div class="form-group" ng-class="{ 'has-success': form['rfid_id'].$valid && submitted,
+                                          'has-error': form['rfid_id'].$invalid && submitted }"
                  ng-show="event.actor_type=='RFID_READER'  &&( (event.action=='IN') || (event.action=='OUT') )">
-                <label>Tag id</label>
+                <label>Rfid id</label>
                 <input name="rfid_id" class="form-control" type="text" ng-model="event.rfid_id" ng-required="event.actor_type=='RFID_READER' &&( (event.action=='IN') || (event.action=='OUT') )">
+                <p class="help-block" ng-show="form['rfid_id'].$error.required && submitted">This field is required</p>
             </div>
 
             <div class="modal-footer">
