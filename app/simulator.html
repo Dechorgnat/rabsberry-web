@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+	<title>Gestion des objets RFID</title>
+	<!-- INCLUDE REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
+	<script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/ui-bootstrap-tpls-1.1.2.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+	<!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
+	<link rel="stylesheet" href="css/main.css">
+
+    <script type="text/javascript" src="js/simulator-app.js"></script>
+    
+    <style>
+        label {
+            width:300px;
+        }
+        input .form-control {
+            width:400px;
+            display:inline;
+        }
+        select .form-control {
+            min-width:400px;
+            display:inline;
+        }
+    </style>
+
+</head>
+<body  ng-app="simulatorApp">
+    <div class='banner'>
+        <div class='container'>
+            <h1>Simulation</h1>
+        </div>
+    </div>
+
+    <div class="container main-frame" ng-controller="simulatorCtrl">
+        <form class="form" name="form" novalidate>
+            <div class="form-group" ng-class="{ 'has-success': form[param['actor_type']].$valid && submitted,
+                                          'has-error': form[param['actor_type']].$invalid && submitted }">
+                <label>Actor type</label>
+                <select ng-model="event.actor_type">
+                    <option ng-repeat="actor_type in actor_types" value="{{ actor_type }}" >
+                        {{ actor_type }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-success': form[param['actor_id']].$valid && submitted,
+                                          'has-error': form[param['actor_id']].$invalid && submitted }">
+                <label>Actor id</label>
+                <input name="actor_id" class="form-control" type="text" ng-model="event.actor_id" ng-required>
+            </div>
+            <div class="form-group" ng-class="{ 'has-success': form[param['action']].$valid && submitted,
+                                          'has-error': form[param['action']].$invalid && submitted }">
+                <label>Action</label>
+                <select ng-model="event.action">
+                    <option ng-repeat="action in actions[event.actor_type]" value="{{ action }}" >
+                        {{ action }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group" ng-class="{ 'has-success': form[param['tag_id']].$valid && submitted,
+                                          'has-error': form[param['tag_id']].$invalid && submitted }"
+                 ng-show="event.actor_type=='RFID_READER'">
+                <label>Tag id</label>
+                <input name="tag_id" class="form-control" type="text" ng-model="event.tag_id" ng-required="event.actor_type=='RFID_READER' &&( (event.action=='IN') || (event.action=='OUT') )">
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-click="send(form)">Envoyer</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
