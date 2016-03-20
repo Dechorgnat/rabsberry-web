@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-	<title>Gestion des objets RFID</title>
+	<title>Simulation d'evenements</title>
 	<!-- INCLUDE REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
 	<script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/angular-resource.min.js"></script>
@@ -65,11 +65,11 @@
                     </option>
                 </select>
             </div>
-            <div class="form-group" ng-class="{ 'has-success': form[param['tag_id']].$valid && submitted,
-                                          'has-error': form[param['tag_id']].$invalid && submitted }"
-                 ng-show="event.actor_type=='RFID_READER'">
+            <div class="form-group" ng-class="{ 'has-success': form[param['rfid_id']].$valid && submitted,
+                                          'has-error': form[param['rfid_id']].$invalid && submitted }"
+                 ng-show="event.actor_type=='RFID_READER'  &&( (event.action=='IN') || (event.action=='OUT') )">
                 <label>Tag id</label>
-                <input name="tag_id" class="form-control" type="text" ng-model="event.tag_id" ng-required="event.actor_type=='RFID_READER' &&( (event.action=='IN') || (event.action=='OUT') )">
+                <input name="rfid_id" class="form-control" type="text" ng-model="event.rfid_id" ng-required="event.actor_type=='RFID_READER' &&( (event.action=='IN') || (event.action=='OUT') )">
             </div>
 
             <div class="modal-footer">
