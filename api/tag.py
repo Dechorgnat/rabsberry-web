@@ -59,5 +59,23 @@ def manage_event(event):
                 raise subprocess.CalledProcessError(p.returncode, "can't read hour", error)
             return output
 
+        if action_prg == 'weather':
+            logging.debug("trying to read weather forecast")
+            args = [CORE_ROOT+'/plugins/weather/read_weather_broadcast.py']
+            p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            output, error = p.communicate()
+            if p.returncode != 0:
+                raise subprocess.CalledProcessError(p.returncode, "can't read weather forecast", error)
+            return output
+
+        if action_prg == 'humor':
+            logging.debug("trying to read humor")
+            args = [CORE_ROOT+'/plugins/surprise/read_humor.py']
+            p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            output, error = p.communicate()
+            if p.returncode != 0:
+                raise subprocess.CalledProcessError(p.returncode, "can't read humor", error)
+            return output
+
         logging.debug(action_prg + " is not implemented")
     return 'OK'
