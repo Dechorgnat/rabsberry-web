@@ -89,6 +89,32 @@ h1 {
     margin-left: 10px;
 }
 
+.edit-box {
+    background-color: white;
+    border : thin solid #0074cd;
+    margin-bottom: 10px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    width:400px;
+    margin: 10px auto;
+    padding : 20px;
+    -moz-box-shadow: 10px 10px 10px 0px #c0c0c0;
+    -webkit-box-shadow: 10px 10px 10px 0px #c0c0c0;
+    -o-box-shadow: 10px 10px 10px 0px #c0c0c0;
+    box-shadow: 10px 10px 10px 0px #c0c0c0;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#c0c0c0, Direction=134, Strength=10);
+}
+.edit-box .title{
+    font-size: 25px;
+    line-height: 25px;
+    color: white;
+    background-color: #0074cd;
+    margin: -20px -20px 10px;
+    padding: 10px 10px 5px;
+}
+
 table, th , td  {
   border: 1px solid grey;
   border-collapse: collapse;
