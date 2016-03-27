@@ -34,15 +34,10 @@
 
 </head>
 <body  ng-app="simulatorApp">
-    <div class='banner'>
-        <div class='container'>
-            <h1>Simulation</h1>
-        </div>
-    </div>
+<div ng-include="'navbar.html'"></div>
+<div class="container main-frame" ng-controller="simulatorCtrl">
+        <h1>Simulation</h1>
 
-    <div class="container main-frame" ng-controller="simulatorCtrl">
-        <div ng-include="'navbar.html'"></div>
-        <br><br>
         <form class="form" name="form" novalidate>
             <div class="form-group" ng-class="{ 'has-success': form['actor_type'].$valid && submitted,
                                           'has-error': form['actor_type'].$invalid && submitted }">

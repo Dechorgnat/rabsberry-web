@@ -5,24 +5,67 @@ body {
 h1, h2, h3 {
     font-family: 'Arial', sans-serif;
 }
-.banner {
-    background-color: #0074cd;
-    color: #FFF;
-    height: 90px;
+
+h1 {
+    font-size:x-large;
+    margin-left: -10px;
+    margin-bottom: 20px;
 }
-.banner h1 {
-    font-size: 40px;
-    line-height: 40px;
+.container {
+    margin-left: 0;
+    padding: 0;
 }
 .main-frame {
     background-color: #FFF;
-    padding: 10px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;
-    margin-top: -20px;
+    padding: 0 25px;
+    width: 100%;
+    margin-top: 1px;
 }
+
+.navbar-nav{
+    margin: 60px 0 0 0 ;
+}
+.navbar-nav > li{
+    border-top: thin solid lightgrey;
+    border-left: thin solid lightgrey;
+    border-right: thin solid lightgrey;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.active{
+    font-weight: bold;
+    background-color: #0074cd ;
+    color: white;
+}
+
+.navbar-nav > li > a{
+    padding: 15px 30px 5px 30px;
+}
+.navbar-nav > li > a:hover{
+    padding: 15px 30px 5px 30px;
+    background-color: #5dace9;
+    color: white;
+    border-color:  #0074cd ;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.navbar-collapse{
+    padding: 0;
+    background-color: white;
+    height: 100px;
+    vertical-align: middle;
+}
+.navbar-brand{
+    padding: 0 10px 0 0;
+}
+.navbar-header{
+    padding: 0;
+    background-color: white;
+    height: 100px;
+    vertical-align: middle;
+}
+
 
 .button_bar {
     position: relative;

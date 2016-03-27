@@ -19,16 +19,10 @@
 
 </head>
 <body  ng-app="rfidApp">
-    <div class='banner'>
-        <div class='container'>
-            <h1>Gestion des objets RFID</h1>
-        </div>
-    </div>
+<div ng-include="'navbar.html'"></div>
+<div class="container main-frame" ng-controller="rfidCtrl">
+        <h1>Gestion des objets RFID</h1>
 
-
-    <div class="container main-frame" ng-controller="rfidCtrl">
-        <div ng-include="'navbar.html'"></div>
-        <br><br>
         <label class="fa fa-search"></label> <input type="text" ng-model="search.desc"> |
         <span ng-click="refresh()" class="clickable"><i class="fa fa-refresh"></i> Refresh</span><br><br>
         <table>

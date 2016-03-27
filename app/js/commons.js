@@ -5,7 +5,7 @@ function HeaderController($scope, $location)
 {
     $scope.isActive = function (viewLocation) {
 
-        return $location.path().indexOf(viewLocation) >= 0;
+        return $location.path().indexOf(viewLocation) == 0;
         //return viewLocation === $location.path();
     };
 }
