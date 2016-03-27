@@ -25,7 +25,9 @@
         </div>
     </div>
 
+
     <div class="container main-frame" ng-controller="rfidCtrl">
+        <div ng-include="'navbar.html'"></div>
         <br><br>
         <label class="fa fa-search"></label> <input type="text" ng-model="search.desc"> |
         <span ng-click="refresh()" class="clickable"><i class="fa fa-refresh"></i> Refresh</span><br><br>

@@ -1,0 +1,9 @@
+<nav class="collapse navbar-collapse " ng-controller="HeaderController">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li ng-class="{ active: isActive('/')}"><a href="./">Home</a></li>
+            <li ng-class="{ active: isActive('/rfid.html')}"><a href="./rfid.html">RFID</a></li>
+            <li ng-class="{ active: isActive('/simulator.html')}"><a href="./simulator.html">Simulator</a></li>
+        </ul>
+    </div>
+</nav>
