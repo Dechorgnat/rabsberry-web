@@ -25,9 +25,9 @@ app.factory('Rfid', ['$resource', function($resource) {
         });
     }]);
 
+app.controller('headerCtrl', headerCtrl);
+
 app.controller('rfidCtrl', function($scope, Rfid){
-
-
     $scope.refresh = function(){
         $scope.rfids = Rfid.query();
     }

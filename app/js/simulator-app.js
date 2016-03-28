@@ -8,8 +8,9 @@ app.config(['$resourceProvider', function ($resourceProvider) {
     $resourceProvider.defaults.stripTrailingSlashes = false;
 }]);
 
-app.controller('simulatorCtrl', function ($scope, $http) {
+app.controller('headerCtrl', headerCtrl);
 
+app.controller('simulatorCtrl', function ($scope, $http) {
     /*
      actor-type: RFID_READER
      actor-id: mir:ror
@@ -43,12 +44,7 @@ app.controller('simulatorCtrl', function ($scope, $http) {
                 .error(function (data, status) {
                     alert("failed (" + status + "): " + data);
                 });
-
-
         } else
             console.error("form is not valid");
-
     }
-
-
 });
