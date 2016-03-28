@@ -20,6 +20,8 @@ h1 {
     padding: 0 25px;
     width: 100%;
     margin-top: 1px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
 .navbar-nav{
@@ -34,9 +36,13 @@ h1 {
 }
 
 .active{
-    font-weight: bold;
-    background-color: #0074cd ;
     color: white;
+    font-weight: bold;
+    background-color: #0074cd;
+    border: 0;
+}
+.navbar-nav > li.active > a{
+    color:white;
 }
 
 .navbar-nav > li > a{
@@ -55,6 +61,8 @@ h1 {
     background-color: white;
     height: 100px;
     vertical-align: middle;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
 .navbar-brand{
     padding: 0 10px 0 0;

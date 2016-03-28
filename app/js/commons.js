@@ -1,11 +1,11 @@
 /**
  * Created by Alain on 27/03/16.
  */
-function headerController($scope, $location)
+function headerCtrl($scope, $location)
 {
     $scope.isActive = function (viewLocation) {
 
-        return $location.path().indexOf(viewLocation) == 0;
+        return $location.absUrl().match(viewLocation+"$");
         //return viewLocation === $location.path();
     };
 }
