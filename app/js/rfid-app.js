@@ -55,4 +55,26 @@ app.controller('rfidCtrl', function($scope, Rfid){
 
     $scope.refresh();
     $scope.rfid = false;
+
+    $scope.send = function (rfid, action) {
+        $scope.submitted = true;
+        var event = {'actor-type': 'RFID_READER','actor-id': 'mir:ror','action': action, 'rfid-id': rfid.rfid_id};
+        var data = JSON.stringify(event);
+        $http({
+            method: "post",
+            url: "../api/event",
+            data: data,
+            headers: {
+                "Content-type": "application/json",
+                "Content-length": data.length
+            }
+        })
+            .success(function (data, status) {
+                alert("ok: " + data);
+            })
+            .error(function (data, status) {
+                alert("failed (" + status + "): " + data);
+            });
+    }
+
 });

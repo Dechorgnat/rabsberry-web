@@ -38,8 +38,8 @@
             <tr ng-repeat="rfid in rfids|orderBy:rfid_id | filter:search">
                 <td>{{ rfid.rfid_id }}</td>
                 <td>{{ rfid.desc }}</td>
-                <td>{{ rfid.action_in }}</td>
-                <td>{{ rfid.action_out }}</td>
+                <td>{{ rfid.action_in }} <i class="fa fa-play green" ng-click="send(rfid,'IN')" ng-hide="rfid.action_in=='None'"></i></td>
+                <td>{{ rfid.action_out }} <i class="fa fa-play green" ng-click="send(rfid,'OUT')" ng-hide="rfid.action_out=='None'"></i></td>
                 <td>
                     <a href="#" ng-click="editRfid(rfid)" class="fa fa-pencil " title="modifier"></a> |
                     <a href="#" ng-click="removeRfid(rfid)" class="fa fa-remove red" title="supprimer"></a>
