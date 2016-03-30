@@ -27,7 +27,7 @@ app.factory('Rfid', ['$resource', function($resource) {
 
 app.controller('headerCtrl', headerCtrl);
 
-app.controller('rfidCtrl', function($scope, Rfid){
+app.controller('rfidCtrl', function($scope, $http, Rfid){
     $scope.refresh = function(){
         $scope.rfids = Rfid.query();
     }
@@ -58,7 +58,7 @@ app.controller('rfidCtrl', function($scope, Rfid){
 
     $scope.send = function (rfid, action) {
         $scope.submitted = true;
-        var event = {'actor-type': 'RFID_READER','actor-id': 'mir:ror','action': action, 'rfid-id': rfid.rfid_id};
+        var event = {'actor_type': 'RFID_READER','actor_id': 'mir:ror','action': action, 'rfid_id': rfid.rfid_id};
         var data = JSON.stringify(event);
         $http({
             method: "post",
