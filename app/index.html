@@ -9,16 +9,18 @@
     <script type="text/javascript" src="js/ui-bootstrap-tpls-1.1.2.min.js"></script>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 
 	<!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
 	<link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="js/index-app.js"></script>
 
 </head>
-<body>
+<body ng-app="indexApp">
+<div ng-include="'navbar.html'"></div>
 <div class="container main-frame">
-    <div ng-include="'navbar.html'"></div>
-    <h1>Rasberry project</h1>
+    <div style="height: 283px;width: 283px;margin: auto auto"><img src="images/rabsberry.png"/></div>
 </div>
 
 </body>
