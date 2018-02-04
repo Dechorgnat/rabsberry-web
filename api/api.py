@@ -19,6 +19,7 @@ from flask.ext.mongorest import methods
 
 import tag
 import button
+import leds
 
 
 app = Flask(__name__)
@@ -76,6 +77,8 @@ def event():
         return tag.manage_event(event)
     if actor_type == "TOP_BUTTON":
         return button.manage_event(event)
+    if actor_type == "LED_SIM":
+        return leds.manage_event(event)
 
 if __name__ == '__main__':
     app.run()
