@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="css/main.css">
 
     <script type="text/javascript" src="js/ledTest-app.js"></script>
-    
+
     <style>
         label {
             width:300px;
@@ -39,6 +39,36 @@
         <h1>Leds test</h1>
 
         <form class="form" name="form" novalidate>
+            <div class="form-group" >
+                <label>Pattern:</label>
+                <select ng-model="pattern">
+                    <option value="0">Stop</option>
+                    <option value="1">Chase</option>
+                    <option value="2">Chase_reverse</option>
+                    <option value="3">All_blink</option>
+                    <option value="4">All_pulse</option>
+                    <option value="5">Triangle</option>
+                </select>
+            <div class="form-group" >
+                <label>Period : </label>
+                <input type="number" ng-model="period">
+            </div>
+            <div class="form-group" >
+                <label>Lite : </label>
+                <input type="number" ng-model="lite">
+            </div>
+            <div class="form-group" >
+                <label>Dark : </label>
+                <input type="number" ng-model="dark">
+            </div>
+            <div class="form-group" >
+                <label>Color 1 : </label>
+                <input type="color" ng-model="color1"> <br>
+            </div>
+            <div class="form-group" >
+                <label>Color 2 : </label>
+                <input type="color" ng-model="color2"> <br>
+            </div>
 
             <div class="form-group" ng-class="{ 'has-success': form['actor_id'].$valid && submitted,
                                           'has-error': form['actor_id'].$invalid && submitted }">
@@ -46,7 +76,6 @@
                 <input ng-keyup="$event.keyCode == 13 && send(form)" id="command" name="command" class="form-control" type="text" ng-model="event.command" required>
                 <p class="help-block" ng-show="form['command'].$error.required && submitted">This field is required</p>
             </div>
-
             <div class="modal-footer">
                 <button class="btn btn-primary" type="button" ng-click="send(form)">Envoyer</button>
             </div>
