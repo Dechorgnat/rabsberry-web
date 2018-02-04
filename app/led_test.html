@@ -75,7 +75,7 @@
             <div class="form-group" ng-class="{ 'has-success': form['actor_id'].$valid && submitted,
                                           'has-error': form['actor_id'].$invalid && submitted }">
                 <label>Command</label>
-                <input ng-keyup="$event.keyCode == 13 && send(form)" id="command" name="command" class="form-control" type="text" ng-model="event.command" required>
+                <input ng-keyup="$event.keyCode == 13 && send(form)" id="command" name="command" class="form-control" type="text" ng-model="command" required>
                 <p class="help-block" ng-show="form['command'].$error.required && submitted">This field is required</p>
             </div>
             <div class="modal-footer">

@@ -18,7 +18,7 @@ app.controller('ledTestCtrl', function ($scope, $http) {
         $scope.submitted = true;
         if (form.$valid) {
             console.log("form is valid");
-            $scope.event.actor_type="LED_SIM";
+            var event = {comman:$scope.command,actor_type:"LED_SIM"};
             var data = JSON.stringify($scope.event);
             $http({
                 method: "post",
