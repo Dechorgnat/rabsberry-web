@@ -66,7 +66,7 @@ app.controller('ledTestCtrl', function ($scope, $http) {
   $scope.getCommand = function() {
     var color1 = hexToRgb($scope.color1);
 
-    switch ($scope.pattern){
+    switch (parseInt($scope.pattern)){
       case 0: //stop
         $scope.command = "0;";
         break;
