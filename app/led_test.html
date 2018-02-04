@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+	<title>Simulation d'evenements</title>
+	<!-- INCLUDE REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
+    <script type="text/javascript" src="js/commons.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/ui-bootstrap-tpls-1.1.2.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+	<!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
+	<link rel="stylesheet" href="css/main.css">
+
+    <script type="text/javascript" src="js/ledTest-app.js"></script>
+    
+    <style>
+        label {
+            width:300px;
+        }
+        input .form-control {
+            width:400px;
+            display:inline;
+        }
+        select .form-control {
+            min-width:400px;
+            display:inline;
+        }
+    </style>
+
+</head>
+<body  ng-app="ledTestApp">
+<div ng-include="'navbar.html'"></div>
+<div class="container main-frame" ng-controller="ledTestCtrl">
+        <h1>Leds test</h1>
+
+        <form class="form" name="form" novalidate>
+
+            <div class="form-group" ng-class="{ 'has-success': form['actor_id'].$valid && submitted,
+                                          'has-error': form['actor_id'].$invalid && submitted }">
+                <label>Command</label>
+                <input ng-keyup="$event.keyCode == 13 && send(form)" id="command" name="command" class="form-control" type="text" ng-model="event.command" required>
+                <p class="help-block" ng-show="form['command'].$error.required && submitted">This field is required</p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-click="send(form)">Envoyer</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
