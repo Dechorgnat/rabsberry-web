@@ -38,4 +38,56 @@ app.controller('ledTestCtrl', function ($scope, $http) {
         } else
             console.error("form is not valid");
     }
+
+  $scope.selectPattern = function() {
+    $scope.showColor1 = true;
+    $scope.showColor2 = false;
+    $scope.showParams = true;
+    switch ($scope.pattern){
+      case 0: //stop
+        $scope.showParams = false;
+        break;
+      case 1: //chase
+      case 2: //chase_reverse
+      case 4: //all_pulse
+      case 5: //triangle
+        $scope.showPeriod = true;
+        $scope.showLite = false;
+        $scope.showDark = false;
+        break;
+      case 3: //all_blink
+        $scope.showPeriod = false;
+        $scope.showLite = true;
+        $scope.showDark = true;
+        break;
+    }
+  }
+
+  $scope.getCommand = function() {
+    var color1 = hexToRgb($scope.color1);
+
+    switch ($scope.pattern){
+      case 0: //stop
+        $scope.command = "0;";
+        break;
+      case 1: //chase
+      case 2: //chase_reverse
+      case 4: //all_pulse
+      case 5: //triangle
+        $scope.command = [$scope.pattern, $scope.period, color1.r, color1.g, color1.b].join(',');
+        break;
+      case 3: //all_blink
+        $scope.command = [$scope.pattern, $scope.period, color1.r, color1.g, color1.b].join(',');
+        break;
+    }
+  }
+
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : {r:0,g:0,b:0};
+  }
 });
