@@ -45,6 +45,7 @@ app.controller('ledTestCtrl', function ($scope, $http) {
     $scope.showParams = true;
     switch (parseInt($scope.pattern)){
       case 0: //stop
+        $scope.command = "0;";
         $scope.showParams = false;
         break;
       case 1: //chase
