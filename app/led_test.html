@@ -53,23 +53,23 @@
             <div ng-if="showParams">
                 <div class="form-group" ng-if="showPeriod" >
                     <label>Period : </label>
-                    <input type="number" ng-model="period">
+                    <input type="number" ng-model="period" ng-change="getCommand()">
                 </div>
                 <div class="form-group"  ng-if="showLite">
                     <label>Lite : </label>
-                    <input type="number" ng-model="lite">
+                    <input type="number" ng-model="lite" ng-change="getCommand()">
                 </div>
                 <div class="form-group" ng-if="showDark" >
                     <label>Dark : </label>
-                    <input type="number" ng-model="dark">
+                    <input type="number" ng-model="dark" ng-change="getCommand()">
                 </div>
                 <div class="form-group"  ng-if="showColor1">
                     <label>Color <span ng-if="showColor2">1</span> : </label>
-                    <input type="color" ng-model="color1"> <br>
+                    <input type="color" ng-model="color1" ng-change="getCommand()"> <br>
                 </div>
                 <div class="form-group" ng-if="showColor2" >
                     <label>Color 2 : </label>
-                    <input type="color" ng-model="color2"> <br>
+                    <input type="color" ng-model="color2" ng-change="getCommand()"> <br>
                 </div>
             </div>
             <div class="form-group" ng-class="{ 'has-success': form['actor_id'].$valid && submitted,
