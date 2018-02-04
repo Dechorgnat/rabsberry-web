@@ -43,7 +43,7 @@ app.controller('ledTestCtrl', function ($scope, $http) {
     $scope.showColor1 = true;
     $scope.showColor2 = false;
     $scope.showParams = true;
-    switch ($scope.pattern){
+    switch (parseInt($scope.pattern)){
       case 0: //stop
         $scope.showParams = false;
         break;
