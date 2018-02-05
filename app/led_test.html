@@ -50,24 +50,24 @@
                     <option value="5">Triangle</option>
                 </select>
             </div>
-            <div ng-if="showParams">
-                <div class="form-group" ng-if="showPeriod" >
+            <div ng-show="showParams">
+                <div class="form-group" ng-show="showPeriod" >
                     <label>Period : </label>
                     <input type="number" ng-model="period" ng-change="getCommand()">
                 </div>
-                <div class="form-group"  ng-if="showLite">
+                <div class="form-group"  ng-show="showLite">
                     <label>Lite : </label>
                     <input type="number" ng-model="lite" ng-change="getCommand()">
                 </div>
-                <div class="form-group" ng-if="showDark" >
+                <div class="form-group" ng-show="showDark" >
                     <label>Dark : </label>
                     <input type="number" ng-model="dark" ng-change="getCommand()">
                 </div>
-                <div class="form-group"  ng-if="showColor1">
-                    <label>Color <span ng-if="showColor2">1</span> : </label>
+                <div class="form-group"  ng-show="showColor1">
+                    <label>Color <span ng-show="showColor2">1</span> : </label>
                     <input type="color" ng-model="color1" ng-change="getCommand()"> <br>
                 </div>
-                <div class="form-group" ng-if="showColor2" >
+                <div class="form-group" ng-show="showColor2" >
                     <label>Color 2 : </label>
                     <input type="color" ng-model="color2" ng-change="getCommand()"> <br>
                 </div>

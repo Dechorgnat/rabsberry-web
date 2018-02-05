@@ -13,6 +13,7 @@ app.controller('headerCtrl', headerCtrl);
 app.controller('ledTestCtrl', function ($scope, $http) {
     $scope.submitted = false;
     $scope.event = {};
+    $scope.period = 1000;
 
     $scope.send = function (form) {
         $scope.submitted = true;
