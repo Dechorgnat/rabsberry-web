@@ -19,8 +19,11 @@ app.controller('ledTestCtrl', function ($scope, $http) {
         $scope.submitted = true;
         if (form.$valid) {
             console.log("form is valid");
-            var event = {comman:$scope.command,actor_type:"LED_SIM"};
-            var data = JSON.stringify($scope.event);
+            var event = {};
+            event.command = $scope.command;
+            event.actor_type = "LED_SIM";
+            var data = JSON.stringify(event);
+            console.log("data",data);
             $http({
                 method: "post",
                 url: "../api/event",
@@ -76,10 +79,10 @@ app.controller('ledTestCtrl', function ($scope, $http) {
       case 2: //chase_reverse
       case 4: //all_pulse
       case 5: //triangle
-        $scope.command = [$scope.pattern, $scope.period, color1.r, color1.g, color1.b].join(',');
+        $scope.command = [$scope.pattern, $scope.period, color1.r, color1.g, color1.b].join(',')+';';
         break;
       case 3: //all_blink
-        $scope.command = [$scope.pattern, $scope.period, color1.r, color1.g, color1.b].join(',');
+        $scope.command = [$scope.pattern, $scope.lite, $scope.dark, color1.r, color1.g, color1.b].join(',')+';';
         break;
     }
   }
