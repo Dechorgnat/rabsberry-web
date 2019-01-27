@@ -10,12 +10,12 @@ from flask import Flask
 from flask import request
 import json
 
-from flask.ext.mongoengine import MongoEngine
-from flask.ext.mongorest import MongoRest
-from flask.ext.mongorest.views import ResourceView
-from flask.ext.mongorest.resources import Resource
-from flask.ext.mongorest import operators as ops
-from flask.ext.mongorest import methods
+from flask_mongoengine import MongoEngine
+from flask_mongorest import MongoRest
+from flask_mongorest.views import ResourceView
+from flask_mongorest.resources import Resource
+from flask_mongorest import operators as ops
+from flask_mongorest import methods
 
 import tag
 import button

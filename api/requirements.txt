@@ -1,7 +1,7 @@
-flask
-flask-mongoengine
-flask-mongorest
-flask-views
-mimerender
-pymongo
-python-dateutil
+Flask==0.10.1
+mongoengine==0.10.6
+Flask-MongoRest==0.1.1
+Flask-Views==0.2.1
+mimerender==0.5.5
+pymongo==3.2
+python-dateutil==2.4.2
