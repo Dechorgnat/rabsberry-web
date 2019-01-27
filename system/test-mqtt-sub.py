@@ -16,7 +16,7 @@ client.loop_start() #start loop to process received messages
 print("subscribing ")
 client.subscribe("ears")#subscribe
 
-client.disconnect() #disconnect
-client.loop_stop() #stop loop
+# client.disconnect() #disconnect
+# client.loop_stop() #stop loop
 while True:
     time.sleep(1)
