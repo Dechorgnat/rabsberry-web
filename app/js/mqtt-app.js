@@ -14,11 +14,11 @@ app.config(['$resourceProvider', function ($resourceProvider) {
 
 app.controller('headerCtrl', headerCtrl);
 
-app.controller('mqttCtrl', function ($scope, $http) {
+app.controller('mqttCtrl', function ($scope, $timeout) {
     $scope.host = "192.168.1.65";
     $scope.port = 9001;
 
-    $scope.MQTTconnect = function() {
+    $scope.MQTTconnect = function () {
         $scope.messages = "";
         console.log("connecting to ws://" + $scope.host + ":" + $scope.port);
         mqtt = new Paho.MQTT.Client($scope.host, $scope.port, "IhmTest");
@@ -27,7 +27,7 @@ app.controller('mqttCtrl', function ($scope, $http) {
             onSuccess: onConnect,
             onFailure: onFailure,
         };
-    
+
         mqtt.onConnectionLost = onConnectionLost;
         mqtt.onMessageArrived = onMessageArrived;
         mqtt.onConnected = onConnected;
@@ -36,28 +36,26 @@ app.controller('mqttCtrl', function ($scope, $http) {
 
     function onConnect() {
         // Once a connection has been made, make a subscription and send a message.
-        $scope.messages = "Connected to " + $scope.host + "on port " + $scope.port;
-        connected_flag = 1;
-        $scope.status = "Connected";
-        console.log("on Connect " + connected_flag);
-        //mqtt.subscribe("sensor1");
-        //message = new Paho.MQTT.Message("Hello World");
-        //message.destinationName = "sensor1";
-        //mqtt.send(message);
+        $timeout(function () {
+            $scope.messages = "Connected to " + $scope.host + "on port " + $scope.port;
+            connected_flag = 1;
+            $scope.status = "Connected";
+            console.log("on Connect " + connected_flag);
+        }, 0);
     }
 
     function onFailure(message) {
-    console.log("Failed");
+        console.log("Failed");
         $scope.messages = "Connection Failed- Retrying";
         setTimeout($scope.MQTTconnect, reconnectTimeout);
     }
+
     function onConnectionLost() {
         console.log("connection lost");
         $scope.status = "Connection Lost";
         $scope.message = "Connection Lost";
         connected_flag = 0;
     }
-
 
     function onMessageArrived(r_message) {
         out_msg = "Message received " + r_message.payloadString + "<br>";
