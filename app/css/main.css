@@ -174,4 +174,5 @@ select .form-control {
     font-weight: bold;
     color: white;
     line-height: 140%;
+    padding: 4px;
 }
