@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mosquitto test client</title>
+    <meta name="description" content="An interactive getting started guide for Brackets.">
+    <script type="text/javascript" src="js/mqttws31.js"></script>
+    <script type="text/javascript">
+        // Parameters
+        var hostname = "192.168.1.65";
+        var port = 1884;
+
+        // Create a client instance
+        var client = new Paho.MQTT.Client(hostname, Number(port), "clientId");
+
+        // set callback handlers
+        client.onConnectionLost = onConnectionLost;
+        client.onMessageArrived = onMessageArrived;
+
+        // connect the client
+        client.connect({
+            onSuccess: onConnect
+        });
+
+
+        // called when the client connects
+        function onConnect() {
+            // Once a connection has been made, make a subscription and send a message.
+            console.log("onConnect");
+            client.subscribe("#");
+        }
+
+        // called when the client loses its connection
+        function onConnectionLost(responseObject) {
+            if (responseObject.errorCode !== 0) {
+                console.log("onConnectionLost:" + responseObject.errorMessage);
+            }
+        }
+
+        // called when a message arrives
+        function onMessageArrived(message) {
+            console.log("Message arrived: topic=" + message.destinationName + ", message=" + message.payloadString);
+        }
+        
+        function send() {
+            if (!client) {
+                return;
+            }
+            var message = new Paho.MQTT.Message("Hello");
+            message.destinationName = "/World";
+            client.send(message);
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="send()">Push a new message</button>
+</body>
+
+</html>
