@@ -46,7 +46,7 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
 
     function onFailure(message) {
         $timeout(function () {console.log("Failed");
-            $scope.messages = "Connection Failed- Retrying";
+            $scope.messages = "Connection Failed - Retrying";
             setTimeout($scope.MQTTconnect, reconnectTimeout);
         }, 0);
     }
@@ -55,7 +55,7 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
         $timeout(function () {console.log("Failed");
             console.log("connection lost");
             $scope.status = "Connection Lost";
-            $scope.message = "Connection Lost";
+            $scope.messages = "Connection Lost";
             connected_flag = 0;
         }, 0);
     }
@@ -66,7 +66,7 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
             out_msg = out_msg + "Message received Topic " + r_message.destinationName;
             //console.log("Message received ",r_message.payloadString);
             console.log(out_msg);
-            $scope.message = out_msg;
+            $scope.messages = out_msg;
         }, 0);
     }
 
@@ -79,7 +79,7 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
         if (connected_flag == 0) {
             out_msg = "<b>Not Connected so can't subscribe</b>";
             console.log(out_msg);
-            $scope.message = out_msg;
+            $scope.messages = out_msg;
             return false;
         }
         var stopic = $scope.Stopic;
@@ -89,11 +89,11 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
     }
 
     $scope.sendMessage = function() {
-        $scope.message = "";
+        $scope.messages = "";
         if (connected_flag == 0) {
             out_msg = "<b>Not Connected so can't send</b>";
             console.log(out_msg);
-            $scope.message = out_msg;
+            $scope.messages = out_msg;
             return false;
         }
         var msg = $scope.message;
