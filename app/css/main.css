@@ -165,14 +165,12 @@ select .form-control {
 }
 #messages {
     background-color: yellow;
-    font-size: 3px;
     font-weight: bold;
     line-height: 140%;
 }
 
 #status {
     background-color: red;
-    font-size: 4px;
     font-weight: bold;
     color: white;
     line-height: 140%;
