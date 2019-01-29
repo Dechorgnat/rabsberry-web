@@ -37,7 +37,7 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
     function onConnect() {
         // Once a connection has been made, make a subscription and send a message.
         $timeout(function () {
-            $scope.messages = "Connected to " + $scope.host + "on port " + $scope.port;
+            $scope.messages = "Connected to " + $scope.host + " on port " + $scope.port;
             connected_flag = 1;
             $scope.status = "Connected";
             console.log("on Connect " + connected_flag);
@@ -45,24 +45,29 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
     }
 
     function onFailure(message) {
-        console.log("Failed");
-        $scope.messages = "Connection Failed- Retrying";
-        setTimeout($scope.MQTTconnect, reconnectTimeout);
+        $timeout(function () {console.log("Failed");
+            $scope.messages = "Connection Failed- Retrying";
+            setTimeout($scope.MQTTconnect, reconnectTimeout);
+        }, 0);
     }
 
     function onConnectionLost() {
-        console.log("connection lost");
-        $scope.status = "Connection Lost";
-        $scope.message = "Connection Lost";
-        connected_flag = 0;
+        $timeout(function () {console.log("Failed");
+            console.log("connection lost");
+            $scope.status = "Connection Lost";
+            $scope.message = "Connection Lost";
+            connected_flag = 0;
+        }, 0);
     }
 
     function onMessageArrived(r_message) {
-        out_msg = "Message received " + r_message.payloadString + "<br>";
-        out_msg = out_msg + "Message received Topic " + r_message.destinationName;
-        //console.log("Message received ",r_message.payloadString);
-        console.log(out_msg);
-        $scope.message = out_msg;
+        $timeout(function () {console.log("Failed");
+            out_msg = "Message received " + r_message.payloadString + "<br>";
+            out_msg = out_msg + "Message received Topic " + r_message.destinationName;
+            //console.log("Message received ",r_message.payloadString);
+            console.log(out_msg);
+            $scope.message = out_msg;
+        }, 0);
     }
 
     function onConnected(recon, url) {
