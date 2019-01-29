@@ -32,7 +32,7 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
         mqtt.onMessageArrived = onMessageArrived;
         mqtt.onConnected = onConnected;
         mqtt.connect(options);
-    }
+    };
 
     function onConnect() {
         // Once a connection has been made, make a subscription and send a message.
@@ -86,7 +86,7 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
         console.log("Subscribing to topic =" + stopic);
         mqtt.subscribe(stopic);
         return false;
-    }
+    };
 
     $scope.sendMessage = function() {
         $scope.messages = "";
