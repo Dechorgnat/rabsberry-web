@@ -62,7 +62,7 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
 
     function onMessageArrived(r_message) {
         $timeout(function () {console.log("Failed");
-            out_msg = "Message received: ["+r_message.destinationName+"] " + r_message.payloadString + "<br>";
+            out_msg = "Message received: ["+r_message.destinationName+"] " + r_message.payloadString;
             //console.log("Message received ",r_message.payloadString);
             console.log(out_msg);
             $scope.messages = out_msg;
@@ -74,7 +74,7 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
     }
 
     $scope.subTopic = function() {
-        $scope.message = "";
+        $scope.messages = "";
         if (connected_flag == 0) {
             out_msg = "<b>Not Connected so can't subscribe</b>";
             console.log(out_msg);
