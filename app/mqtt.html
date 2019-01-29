@@ -20,30 +20,29 @@
     <script type="text/javascript" src="js/mqtt-app.js"></script>
 </head>
 <body ng-app="mqttApp">
-<div ng-include="'navbar.html'"></div>
-<div class="container main-frame" ng-controller="mqttCtrl">
-    <h1>MQTT tests</h1>
-    <div id="status">Connection Status: {{status}}</div>
-    <br>
-    <form name="connform" action="" onsubmit="MQTTconnect()">
+
+    <div ng-include="'navbar.html'"></div>
+
+    <div class="container main-frame" ng-controller="mqttCtrl">
+        <h1>MQTT tests</h1>
+        <div id="status">Connection Status: {{status}}</div>
+        <br>
 
         Server: <input type="text" ng-model="host"><br><br>
         Port: <input type="text" ng-model="port"><br><br>
-        <input type="submit" value="Connect">
-    </form>
-    <hr>
-    <form name="subs" action="" onsubmit="subTopic()">
+        <button class="btn btn-primary" ng-click="MQTTconnect()">Connect</button>
+        <hr>
+
         Subscribe Topic: <input type="text" ng-model="Stopic"><br><br>
-        <input type="submit" value="Subscribe">
-    </form>
-    <hr>
-    <form name="smessage" action="" onsubmit="sendMessage()">
+        <button class="btn btn-primary" ng-click="subTopic()">Subscribe</button>
+        <hr>
 
         Message: <input type="text" ng-model="message"><br><br>
         Publish Topic: <input type="text" ng-model="Ptopic"><br><br>
-        <input type="submit" value="Submit">
-    </form>
-    Messages:<p id="messages">{{ messages}}</p>
-</div>
+        <button class="btn btn-primary" ng-click="sendMessage()">Publish</button>
+        <hr>
+
+        Messages:<p id="messages">{{ messages}}</p>
+    </div>
 </body>
 </html>
