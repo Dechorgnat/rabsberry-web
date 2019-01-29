@@ -62,8 +62,7 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
 
     function onMessageArrived(r_message) {
         $timeout(function () {console.log("Failed");
-            out_msg = "Message received " + r_message.payloadString + "<br>";
-            out_msg = out_msg + "Message received Topic " + r_message.destinationName;
+            out_msg = "Message received: ["+r_message.destinationName+"] " + r_message.payloadString + "<br>";
             //console.log("Message received ",r_message.payloadString);
             console.log(out_msg);
             $scope.messages = out_msg;
@@ -83,7 +82,7 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
             return false;
         }
         var stopic = $scope.Stopic;
-        console.log("Subscribing to topic =" + stopic);
+        console.log("Subscribing to topic " + stopic);
         mqtt.subscribe(stopic);
         return false;
     };
