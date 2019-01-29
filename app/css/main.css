@@ -151,3 +151,29 @@ form label {
 .clickable {cursor: hand;}
 
 input { width:250px;}
+
+label {
+    width:300px;
+}
+input .form-control {
+    width:400px;
+    display:inline;
+}
+select .form-control {
+    min-width:400px;
+    display:inline;
+}
+#messages {
+    background-color: yellow;
+    font-size: 3px;
+    font-weight: bold;
+    line-height: 140%;
+}
+
+#status {
+    background-color: red;
+    font-size: 4px;
+    font-weight: bold;
+    color: white;
+    line-height: 140%;
+}
