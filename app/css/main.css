@@ -167,6 +167,7 @@ select .form-control {
     background-color: yellow;
     font-weight: bold;
     line-height: 140%;
+    padding: 4px;
 }
 
 #status {

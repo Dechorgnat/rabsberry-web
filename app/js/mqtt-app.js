@@ -74,7 +74,7 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
         console.log(" in onConnected " + reconn);
     }
 
-    function subTopic() {
+    $scope.subTopic = function() {
         $scope.message = "";
         if (connected_flag == 0) {
             out_msg = "<b>Not Connected so can't subscribe</b>";
@@ -88,7 +88,7 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
         return false;
     }
 
-    function sendMessage() {
+    $scope.sendMessage = function() {
         $scope.message = "";
         if (connected_flag == 0) {
             out_msg = "<b>Not Connected so can't send</b>";
