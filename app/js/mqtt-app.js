@@ -18,6 +18,8 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
     $scope.host = "192.168.1.65";
     $scope.port = 9001;
 
+    $scope.channel ='leds';
+
     $scope.MQTTconnect = function () {
         $scope.messages = "";
         console.log("connecting to ws://" + $scope.host + ":" + $scope.port);
@@ -95,10 +97,22 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
             $scope.messages = out_msg;
             return false;
         }
-        var msg = $scope.message;
-        console.log(msg);
-        message = new Paho.MQTT.Message(msg);
-        message.destinationName = $scope.Ptopic;
+        if ($scope.channel == 'leds') {
+            var jsonMsg = {command: $scope.command_leds};
+            if (($scope.command_leds == 'set') || ($scope.command_leds == 'unset')) {
+                jsonMsg.leds = $scope.leds;
+            }
+            if ($scope.command_leds == 'set') {
+                jsonMsg.r = $scope.r;
+                jsonMsg.g = $scope.g;
+                jsonMsg.b = $scope.b;
+            }
+        }
+        console.log(jsonMsg);
+        $scope.message = JSON.stringify(jsonMsg);
+
+        message = new Paho.MQTT.Message($scope.message);
+        message.destinationName = $scope.channel;
         mqtt.send(message);
         return false;
     }

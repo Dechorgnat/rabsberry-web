@@ -37,11 +37,50 @@
         <button class="btn btn-primary" ng-click="subTopic()">Subscribe</button>
         <hr>
 
-        <label>Channel:</label> <input type="text" ng-model="Ptopic"><br><br>
+        <label>Channel:</label>
+        <select ng-model="channel">
+            <option>leds</option>
+            <option>ears</option>
+        </select><br>
+        <div ng-show="channel=='leds'">
+            Command:
+            <select ng-model="command_leds">
+                <option></option>
+                <option>set</option>
+                <option>unset</option>
+                <option>stop</option>
+            </select>
+            leds:
+            <select ng-model="leds" ng-init="leds=['0']" multiple>
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select>
+             R: <input type="text" ng-model="r">, G: <input type="text" ng-model="g">, B: <input type="text" ng-model="b"><br>
+        </div>
+        <div ng-show="channel=='ears'">
+            Command:
+            <select ng-model="command_ears">
+                <option></option>
+                <option>set_pos</option>
+                <option>step</option>
+                <option>stop</option>
+            </select>
+            ear:
+            <select ng-model="ear"ng-init="ear='left'">
+                <option>left</option>
+                <option>right</option>
+                <option>both</option>
+            </select>
+            position ou steps: <input type="number" ng-model="pos">, sens: <select ng-model="sens" ng-init="sens='forward'"><option>forward</option><option>backward</option></select><br>
+        </div>
+        <br>
         <label>Message:</label> <input type="text" ng-model="message"><br><br>
         <button class="btn btn-primary" ng-click="sendMessage()">Publish</button>
-        <hr>
 
+        <hr>
         Messages:<p id="messages">{{ messages}}</p>
     </div>
 </body>
