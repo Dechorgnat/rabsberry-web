@@ -103,9 +103,9 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
                 jsonMsg.leds = $scope.leds;
             }
             if ($scope.command_leds == 'set') {
-                jsonMsg.r = $scope.r;
-                jsonMsg.g = $scope.g;
-                jsonMsg.b = $scope.b;
+                jsonMsg.r = parseInt($scope.r);
+                jsonMsg.g = parseInt($scope.g);
+                jsonMsg.b = parseInt($scope.b);
             }
         }
         console.log(jsonMsg);
