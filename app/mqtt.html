@@ -51,7 +51,7 @@
             <option>pattern</option>
             <option>stop</option>
         </select>
-        <div ng-if="(command_leds=='set')||(command_leds=='unset')">leds:
+        <div ng-show="(command_leds=='set')||(command_leds=='unset')">leds:
             <select ng-model="leds" ng-init="leds=['0']" multiple>
                 <option>0</option>
                 <option>1</option>
@@ -60,7 +60,7 @@
                 <option>4</option>
             </select>
         </div>
-        <select ng-model="pattern" ng-init="pattern='pluie'" ng-if="command_leds=='pattern'">
+        <select ng-model="pattern" ng-init="pattern='pluie'" ng-show="command_leds=='pattern'">
             <option>pluie</option>
             <option>soleil</option>
             <option>nuage</option>
@@ -68,7 +68,7 @@
             <option>brouillard</option>
             <option>orage</option>
         </select>
-        <div ng-if="command_leds=='set'" style="display: inline-block">
+        <div ng-show="command_leds=='set'" style="display: inline-block">
             R: <input type="text" ng-model="r" style="width:50px">,
             G: <input type="text" ng-model="g" style="width:50px">,
             B: <input type="text" ng-model="b" style="width:50px">
@@ -83,15 +83,15 @@
             <option>step</option>
             <option>stop</option>
         </select>
-        <div ng-if="(command_ears=='goto')||(command_ears=='step')" style="display: inline-block">
+        <div ng-show="(command_ears=='goto')||(command_ears=='step')" style="display: inline-block">
             ear:
             <select ng-model="ear" ng-init="ear='right'">
                 <option>left</option>
                 <option>right</option>
                 <option>both</option>
             </select>
-            <span ng-if="command_ears=='goto'">position</span>
-            <span ng-if="command_ears=='step'">steps</span>
+            <span ng-show="command_ears=='goto'">position</span>
+            <span ng-show="command_ears=='step'">steps</span>
             : <input type="number" ng-model="pos" ng-init="pos=10" style="width:50px">
             dir: <select ng-model="dir" ng-init="dir='forward'">
         <option>forward</option>
