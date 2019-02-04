@@ -107,6 +107,9 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
                 jsonMsg.g = parseInt($scope.g);
                 jsonMsg.b = parseInt($scope.b);
             }
+            if ($scope.command_leds == 'pattern') {
+                jsonMsg.pattern = $scope.pattern;
+            }
         }
         if ($scope.channel == 'ears') {
             var jsonMsg = {command: $scope.command_ears};
