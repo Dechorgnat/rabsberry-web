@@ -21,37 +21,37 @@
 </head>
 <body ng-app="mqttApp">
 
-    <div ng-include="'navbar.html'"></div>
+<div ng-include="'navbar.html'"></div>
 
-    <div class="container main-frame" ng-controller="mqttCtrl">
-        <h1>MQTT tests</h1>
-        <div id="status">Connection Status: {{status}}</div>
-        <br>
+<div class="container main-frame" ng-controller="mqttCtrl">
+    <h1>MQTT tests</h1>
+    <div id="status">Connection Status: {{status}}</div>
+    <br>
 
-        <label>Server:</label> <input type="text" ng-model="host"><br><br>
-        <label>Port:</label> <input type="text" ng-model="port"><br><br>
-        <button class="btn btn-primary" ng-click="MQTTconnect()">Connect</button>
-        <hr>
+    <label>Server:</label> <input type="text" ng-model="host"><br><br>
+    <label>Port:</label> <input type="text" ng-model="port"><br><br>
+    <button class="btn btn-primary" ng-click="MQTTconnect()">Connect</button>
+    <hr>
 
-        <label>Subscribe Topic:</label> <input type="text" ng-model="Stopic"><br><br>
-        <button class="btn btn-primary" ng-click="subTopic()">Subscribe</button>
-        <hr>
+    <label>Subscribe Topic:</label> <input type="text" ng-model="Stopic"><br><br>
+    <button class="btn btn-primary" ng-click="subTopic()">Subscribe</button>
+    <hr>
 
-        <label>Channel:</label>
-        <select ng-model="channel">
-            <option>leds</option>
-            <option>ears</option>
-        </select><br>
-        <div ng-show="channel=='leds'">
-            Command:
-            <select ng-model="command_leds">
-                <option></option>
-                <option>set</option>
-                <option>unset</option>
-                <option>pattern</option>
-                <option>stop</option>
-            </select>
-            leds:
+    <label>Channel:</label>
+    <select ng-model="channel">
+        <option>leds</option>
+        <option>ears</option>
+    </select><br>
+    <div ng-show="channel=='leds'">
+        Command:
+        <select ng-model="command_leds">
+            <option></option>
+            <option>set</option>
+            <option>unset</option>
+            <option>pattern</option>
+            <option>stop</option>
+        </select>
+        <div ng-if="(command_leds=='set')||(command_leds=='unset')">leds:
             <select ng-model="leds" ng-init="leds=['0']" multiple>
                 <option>0</option>
                 <option>1</option>
@@ -59,38 +59,53 @@
                 <option>3</option>
                 <option>4</option>
             </select>
-            <select ng-model="pattern" ng-init="pattern='pluie'">
-                <option>pluie</option>
-                <option>soleil</option>
-                <option>neige</option>
-                <option>brouillard</option>
-                <option>nuage</option>
-                <option>orage</option>
-            </select>
-             R: <input type="text" ng-model="r">, G: <input type="text" ng-model="g">, B: <input type="text" ng-model="b"><br>
         </div>
-        <div ng-show="channel=='ears'">
-            Command:
-            <select ng-model="command_ears">
-                <option></option>
-                <option>goto</option>
-                <option>step</option>
-                <option>stop</option>
-            </select>
+        <select ng-model="pattern" ng-init="pattern='pluie'" ng-if="command_leds=='pattern'">
+            <option>pluie</option>
+            <option>soleil</option>
+            <option>nuage</option>
+            <option>neige</option>
+            <option>brouillard</option>
+            <option>orage</option>
+        </select>
+        <div ng-if="command_leds=='set'" style="display: inline-block">
+            R: <input type="text" ng-model="r" style="width:50px">,
+            G: <input type="text" ng-model="g" style="width:50px">,
+            B: <input type="text" ng-model="b" style="width:50px">
+        </div>
+        <br>
+    </div>
+    <div ng-show="channel=='ears'">
+        Command:
+        <select ng-model="command_ears">
+            <option></option>
+            <option>goto</option>
+            <option>step</option>
+            <option>stop</option>
+        </select>
+        <div ng-if="(command_ears=='goto')||(command_ears=='step')" style="display: inline-block">
             ear:
-            <select ng-model="ear"ng-init="ear='right'">
+            <select ng-model="ear" ng-init="ear='right'">
                 <option>left</option>
                 <option>right</option>
                 <option>both</option>
-            </select> 
-            position ou steps: <input type="number" ng-model="pos" ng-init="pos=10"> dir: <select ng-model="dir" ng-init="dir='forward'"><option>forward</option><option>backward</option></select><br>
-        </div>
+            </select>
+            <span ng-if="command_ears=='goto'">position</span>
+            <span ng-if="command_ears=='step'">steps</span>
+            : <input type="number" ng-model="pos" ng-init="pos=10" style="width:50px">
+            dir: <select ng-model="dir" ng-init="dir='forward'">
+        <option>forward</option>
+        <option>backward</option>
+    </select>
+            </div>
         <br>
-        <label>Message:</label> <input type="text" ng-model="message"><br><br>
-        <button class="btn btn-primary" ng-click="sendMessage()">Publish</button>
-
-        <hr>
-        Messages:<p id="messages">{{ messages}}</p>
     </div>
+    <br>
+    <label>Message:</label> <input type="text" ng-model="message"><br><br>
+    <button class="btn btn-primary" ng-click="sendMessage()">Publish</button>
+
+    <hr>
+    Messages:<p id="messages">{{ messages}}</p>
+</div>
 </body>
 </html>
