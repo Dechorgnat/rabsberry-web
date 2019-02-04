@@ -108,6 +108,14 @@ app.controller('mqttCtrl', function ($scope, $timeout) {
                 jsonMsg.b = parseInt($scope.b);
             }
         }
+        if ($scope.channel == 'ears') {
+            var jsonMsg = {command: $scope.command_ears};
+            if (($scope.command_ears == 'goto') || ($scope.command_ears == 'step')) {
+                jsonMsg.ear = $scope.ear;
+                jsonMsg.pos = parseInt($scope.pos);
+                jsonMsg.dir = $scope.dir;
+            }
+        }
         console.log(jsonMsg);
         $scope.message = JSON.stringify(jsonMsg);
 

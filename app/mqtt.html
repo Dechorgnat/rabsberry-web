@@ -64,17 +64,17 @@
             Command:
             <select ng-model="command_ears">
                 <option></option>
-                <option>set_pos</option>
+                <option>goto</option>
                 <option>step</option>
                 <option>stop</option>
             </select>
             ear:
-            <select ng-model="ear"ng-init="ear='left'">
+            <select ng-model="ear"ng-init="ear='right'">
                 <option>left</option>
                 <option>right</option>
                 <option>both</option>
-            </select>
-            position ou steps: <input type="number" ng-model="pos">, sens: <select ng-model="sens" ng-init="sens='forward'"><option>forward</option><option>backward</option></select><br>
+            </select> 
+            position ou steps: <input type="number" ng-model="pos" ng-init="pos=10"> dir: <select ng-model="dir" ng-init="dir='forward'"><option>forward</option><option>backward</option></select><br>
         </div>
         <br>
         <label>Message:</label> <input type="text" ng-model="message"><br><br>
