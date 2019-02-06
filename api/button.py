@@ -23,7 +23,7 @@ def manage_event(event):
         client.publish("leds",json.dumps(message))
         print json.dumps(message)
         
-        message = {"command": "step", "ear": "both", "pos":17, "dir":"forward"}
+        message = {"command": "goto", "ear": "both", "pos":13, "dir":"forward"}
         client.publish("ears",json.dumps(message))
         print json.dumps(message)
         
