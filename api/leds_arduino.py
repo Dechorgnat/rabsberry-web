@@ -3,7 +3,7 @@
 import subprocess
 from Log import Log
 
-from core.tools.config import getConfig
+from Rabsberry.core.tools.config import getConfig
 conf = getConfig()
 CORE_ROOT = conf['CORE_ROOT']
 

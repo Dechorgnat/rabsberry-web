@@ -5,7 +5,7 @@ import logging
 
 logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', level=logging.DEBUG, filename='/var/log/rabsberry/api.log')
   
-from core.tools.config import getConfig
+from Rabsberry.core.tools.config import getConfig
 conf = getConfig()
 CORE_ROOT = conf['CORE_ROOT']
 
